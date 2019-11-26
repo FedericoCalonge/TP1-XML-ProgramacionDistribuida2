@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <!-- Elementos simples -->
+    <xs:element name="capitan" type="textoMax30"/>
+    <xs:element name="dt" type="textoMax30"/>
+    <xs:element name="figura" type="textoMax30"/>
+    <xs:element name="autor" type="textoMax30"/>
+
+    <xs:element name="minuto">
+        <xs:simpleType>
+            <xs:restriction base="xs:positiveInteger">
+               <xs:maxInclusive value="130"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <!-- Atributos -->
+        <!-- Atributo SIN restricciones -->
+        <xs:attribute name="club" type="xs:string"/>
+
+        <!-- Atributos CON restricciones -->
+        <xs:attribute name="fecha">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="\d{2}[/]\d{2}[/]\d{4}"/>
+                    <xs:length value="10"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+
+        <xs:attribute name="posicion">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="arquero"/>
+                    <xs:enumeration value='defensor'/>
+                    <xs:enumeration value='mediocampista'/>
+                    <xs:enumeration value='delantero'/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+
+    <!--Tipo simple propio para usarlos arriba en -elementos simples- -->
+    <xs:simpleType name="textoMax30">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Elementos complejos -->
+    <xs:element name="equipos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="local" type="localVisitante" maxOccurs="1"/> <!--con el "type=localVisitante" referenciamos al localVIsitante de abajo-->
+                <xs:element name="visitante" type="localVisitante" maxOccurs="1"/>
+                <!-- o ver si el maxOccurs="1" va al lado del sequence, ver-->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+        <!--Tipo complejo propio para usarlos arriba en -local- y -visitante- -->
+        <xs:complexType name="localVisitante">
+            <xs:sequence>
+                <xs:element ref="formacion"/>
+                <xs:element ref="capitan"/>
+                <xs:element ref="dt"/>
+            </xs:sequence>
+            <xs:attribute ref="club" use="required"/>
+        </xs:complexType>
+
+    <xs:element name="formacion">
+        <xs:complexType>
+            <xs:sequence maxOccurs="11"> <!--Secuencia de 11 jugadores MAX-->
+                <xs:element ref="jugador"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="jugador">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="posicion"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="goles">
+        <xs:complexType>
+            <!--Uso el all porque puede ser local2 y despues visitante2 o al reves. Y pongo los minOcurrs para que puedan haber o no goles (osea pueden o no estar local2 y visitante2) -->
+            <xs:all>
+            <!-- Despues cambiar en el xml y aca el local2 por local y visitante2 por visitante y ver que como hacer para que sean distintos a los complexType de visitante y local que puse arriba -->
+                <xs:element name="local" type="localVisitante2" minOccurs="0"/>
+                <xs:element name="visitante" type="localVisitante2" minOccurs="0"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Tipo complejo propio para usarlos arriba en -local2- y -visitante2- -->
+    <xs:complexType name="localVisitante2">
+        <xs:sequence>
+            <xs:element ref="gol" maxOccurs="unbounded"/> <!--Este max ocurrs tenia que ponerlo sino me saltaba un error en el xml con gol, NO podia poner mas de 1 nose porque todavia-->
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="gol">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="minuto"/>
+                <xs:element ref="autor"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Elemento raiz partido-->
+    <xs:element name="partido">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="equipos" />
+                <xs:element ref="figura" maxOccurs="unbounded"/>  <!--Con unbounded puedo poner mas de 1 figura-->
+                <xs:element ref="goles" minOccurs="0"/> <!--Asi, si no hay goles no pasa nada-->
+            </xs:sequence>
+            <xs:attribute ref="fecha" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

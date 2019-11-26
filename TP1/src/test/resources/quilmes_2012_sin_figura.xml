@@ -1,0 +1,51 @@
+<partido fecha="23/06/2012">
+    <!-- partido por el ascenso directo a Primera División -->
+    <equipos>
+        <local club="Guilermo Brown">
+            <formacion>
+                <jugador posicion="arquero">Emanuel Guirado</jugador>
+                <jugador posicion="defensor">Mario Vera</jugador>
+                <jugador posicion="defensor">Gabriel Ruiz</jugador>
+                <jugador posicion="defensor">Damián Willhuber</jugador>
+                <jugador posicion="mediocampista">Javier Rodas</jugador>
+                <jugador posicion="mediocampista">Diego Cardozo</jugador>
+                <jugador posicion="mediocampista">Walter Aciar</jugador>
+                <jugador posicion="mediocampista">Maximiliano Zbrun</jugador>
+                <jugador posicion="mediocampista">Hernán Zanni</jugador>
+                <jugador posicion="delantero">Robinson Torres</jugador>
+                <jugador posicion="delantero">Alan Moreno</jugador>
+            </formacion>
+            <capitan>Mario Vera</capitan>
+            <dt>Dario Tempesta</dt>
+        </local>
+        <visitante club="Quilmes">
+            <formacion>
+                <jugador posicion="arquero">Emanuel Tripodi</jugador>
+                <jugador posicion="defensor">Gastón Corvalán</jugador>
+                <jugador posicion="defensor">Sebastián Martínez</jugador>
+                <jugador posicion="defensor">Joel Carli</jugador>
+                <jugador posicion="defensor">Germán Mandarino</jugador>
+                <jugador posicion="mediocampista">Lucas Rimoldi</jugador>
+                <jugador posicion="mediocampista">Pablo Garnier</jugador>
+                <jugador posicion="mediocampista">Jacobo Mansilla</jugador>
+                <jugador posicion="mediocampista">Miguel Caneo</jugador>
+                <jugador posicion="delantero">Ezequiel Rescaldani</jugador>
+                <jugador posicion="delantero">Martín Cauteruccio</jugador>
+            </formacion>
+            <capitan>Miguel Caneo</capitan>
+            <dt>Omar De Felippe</dt>
+        </visitante>
+    </equipos>
+    <goles>
+        <visitante>
+            <gol>
+                <minuto>18</minuto>
+                <autor>Martin Cauteruccio</autor>
+            </gol>
+            <gol>
+                <minuto>23</minuto>
+                <autor>Martin Cauteruccio</autor>
+            </gol>
+        </visitante>
+    </goles>
+</partido>
