@@ -23,9 +23,6 @@ public class DOMCapitanEquipo {
         NodeList nodeList = doc.getElementsByTagName(localOVisitante);
         final Node nodeLocalOVisitante = nodeList.item(0);
         Node capitan = DOMFuncionesAuxiliares.getUniqueNodeCapitan(nodeLocalOVisitante.getChildNodes(), "capitan");       //Con getChildNodes() podemos obtener los hijos de local o visitante (osea formacion, captain o dt). En este caso "capitan" es el nodo que queremos traer.
-        //return capitan.getNodeName() me devuelve "capitan".
-        //SABER: En el DOM el texto de un elemento es otro nodo. O sea, en el ejemplo este: <capitan>Mario Vera</capitan>
-        //       --> En el dom, el nodo de tipo elemento "capitan" tiene un hijo de tipo texto que dice "Mario Vera".
         return capitan.getFirstChild().getNodeValue();//Obtengo el hijo de tipo de texto.
     }
 }

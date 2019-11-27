@@ -21,14 +21,14 @@ public class DOMFormacionLocalYVisitante {
 
         //Creamos el parser y parseamos el input stream:
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        Document doc = builder.parse(new InputSource(inputStream)); //Asì creamos tod0 el ARBOL DOM. Y despues de eso con doc.algo podemos agarrar cosas.
+        Document doc = builder.parse(new InputSource(inputStream)); //Asi creamos tod0 el ARBOL DOM. Y despues de eso con doc.algo podemos agarrar cosas.
 
         //Obtenemos una coleccion playersNodes con los jugadores locales o visitantes:
         NodeList nodeList = doc.getElementsByTagName(localOVisitante);
-        final Node nodeLocalOVisitante = nodeList.item(0);  //(0) --> sacamos el 1er item!. De la lista sacamos el item 0 (ya que sabemos que hay 1 solo visitante/local). Saber: NODO=elementos del arbol.
-        Node formacion = DOMFuncionesAuxiliares.getUniqueNodeByName(nodeLocalOVisitante.getChildNodes(), "formacion");       //Con getChildNodes() podemos obtener los hijos de visitante (osea formacion, captain o dt). En este caso "formacion" es el nodo que queremos traer.
+        final Node nodeLocalOVisitante = nodeList.item(0);  //(0) --> Sacamos el 1er item!. De la lista sacamos el item 0 (ya que sabemos que hay 1 solo visitante/local).
+        Node formacion = DOMFuncionesAuxiliares.getUniqueNodeByName(nodeLocalOVisitante.getChildNodes(), "formacion"); //Con getChildNodes() podemos obtener los hijos de visitante (osea formacion, captain o dt). En este caso "formacion" es el nodo que queremos traer.
         //Creamos una COLECCION ya que es una interfaz ITERABLE con un for:
-        Collection<Node> playersNodes = DOMFuncionesAuxiliares.getNodesByName(formacion.getChildNodes(), "jugador");  //le pedimos todos los nodos "jugador" (hijos de formacion)
+        Collection<Node> playersNodes = DOMFuncionesAuxiliares.getNodesByName(formacion.getChildNodes(), "jugador");   //Le pedimos todos los nodos "jugador" (hijos de formacion)
         return playersNodes;
     }
 

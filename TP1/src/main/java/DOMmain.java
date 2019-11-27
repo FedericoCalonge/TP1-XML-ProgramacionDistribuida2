@@ -9,6 +9,9 @@ import java.io.InputStream;
 import java.util.*;
 
 public class DOMmain {
+    //Constantes:
+    static final String local  = "local";
+    static final String visitante = "visitante";
 
     //Variable xmlFileName con su getter y setter (la usamos más abajo en muchos métodos):
     private static String xmlFileName;
@@ -19,10 +22,6 @@ public class DOMmain {
     public static String getXmlFilePath() { return xmlFilePath; }
     public static void setXmlFilePath(String xmlFilePath) { DOMmain.xmlFilePath = xmlFilePath; }
 
-    //Constantes:
-    static final String local  = "local";
-    static final String visitante = "visitante";
-
     //Main (menu principal):
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
         Scanner inputPaths = new Scanner(System.in);
@@ -30,20 +29,18 @@ public class DOMmain {
         System.out.println("Por ejemplo: /home/federicio/Desktop/PD2-MisReposGithub/TP1/TP1/src/main/resources/quilmes_2012.xml");
         String xmlFilePath = inputPaths.nextLine();
         setXmlFilePath(xmlFilePath);
-        //String xmlFilePath = "/home/federicio/Desktop/PD2-MisReposGithub/TP1/TP1/src/main/resources/quilmes_2012.xml";
 
         System.out.println("Ahora ingrese ruta del archivo XSD (XML-Schema): ");
         System.out.println("Por ejemplo: /home/federicio/Desktop/PD2-MisReposGithub/TP1/TP1/src/main/resources/quilmes_2012.xsd");
         String schemaFilePath = inputPaths.nextLine();
-        //String schemaFilePath = "/home/federicio/Desktop/PD2-MisReposGithub/TP1/TP1/src/main/resources/quilmes_2012.xsd";
 
-        // Validamos el XML contra el XML Schema (XSD):
         //Obtenemos el nombre del arhivo xml dado el xmlFilePath usando split y lo seteamos a la variable xmlFileName que utilizaremos más abajo en los distintos métodos:
-        String[] vectorXmlFilePath = xmlFilePath.split("/"); //asi vector[0]= vacio, [1]=home, [2]=federicio, [lenght-1]=quilmes.xml.
-        String nombreArchivoXML = vectorXmlFilePath[vectorXmlFilePath.length-1]; //siempre en el indice vector.lenght-1 va a quedar el nombre del archivo.
+        String[] vectorXmlFilePath = xmlFilePath.split("/");               //Asi vector[0]= vacio, [1]=home, [2]=federicio, [lenght-1]=quilmes.xml.
+        String nombreArchivoXML = vectorXmlFilePath[vectorXmlFilePath.length-1]; //Siempre en el indice vector.lenght-1 va a quedar el nombre del archivo.
         System.out.println("Nombre del archivo XML es: " + nombreArchivoXML);
         setXmlFileName(nombreArchivoXML);
 
+        //Validamos el XML contra el XML Schema (XSD):
         boolean validated = XmlSchemaValidator.validateXMLSchema(schemaFilePath, xmlFilePath); //XmlSchemaValidator es la clase dentro del paquete validator (no hace falta hacer el import).
         if (validated==false) {
             System.out.println("El documento XML es inválido dados dichos errores encontrados, terminará la ejecución");
@@ -51,8 +48,6 @@ public class DOMmain {
         }
         else{
             System.out.println("El documento XML es válido");
-            //Ahora que ya esta validado el XML seguimos...
-
             Scanner input = new Scanner(System.in);
             boolean salir = false;
             int opcion; //Guardaremos la opcion del usuario.
@@ -60,9 +55,9 @@ public class DOMmain {
             while (!salir) {
                 System.out.println("Elija la opcion:");
                 System.out.println("1-Mostrar la formación del local y visitante"); //Hay que agregar un * al lado del apellido  del jugador por cada gol realizado en el partido y una [C] al lado de cada capitán.
-                System.out.println("2-Mostrar la figura del partido");  //Puede ser más de una figura. Como minimo debe haber una. Realizar esto sin recorrer el DOM.
-                System.out.println("3-Mostrar resultado del partido");  //Ver como se tiene que detallar en el pdf.
-                System.out.println("4-Exportar XML con seccion notas"); //Hay que agregar una nota/comentario, y crear un <notas> en el XML como hija de <partido>
+                System.out.println("2-Mostrar la figura del partido");              //Puede ser más de una figura. Como minimo debe haber una. Realizar esto sin recorrer el DOM.
+                System.out.println("3-Mostrar resultado del partido");              //Ver como se tiene que detallar en el pdf.
+                System.out.println("4-Exportar XML con seccion notas");             //Hay que agregar una nota/comentario, y crear un <notas> en el XML como hija de <partido>
                 System.out.println("5-Salir");
 
                 try {
@@ -150,8 +145,6 @@ public class DOMmain {
 
         //Imprimimos:
         System.out.println(equipoLocal + " " + cantidadGolesLocal);
-        //DOMFuncionesAuxiliares.imprimirDiccionario(dicAutorGolLocal); //Sin orden.
-        //DOMFuncionesAuxiliares.imprimirDiccionario(dicAutorGolLocalOrdenadoPorValor); //Ordenado por valor.
         DOMFuncionesAuxiliares.imprimirDiccionario(dicAutorGolLocalOrdenadoPorValorYPorClave); //Ordenado por valor y por clave.
 
         //Equipo visitante:
@@ -166,8 +159,6 @@ public class DOMmain {
 
         //Imprimimos:
         System.out.println(equipoVisitante + " " + cantidadGolesVisitante);
-        //DOMFuncionesAuxiliares.imprimirDiccionario(dicAutorGolVisitante); //Sin orden.
-        //DOMFuncionesAuxiliares.imprimirDiccionario(dicAutorGolVisitanteOrdenadoPorValor); //Ordenado por valor.
         DOMFuncionesAuxiliares.imprimirDiccionario(dicAutorGolVisitanteOrdenadoPorValorYPorClave); //Ordenado por valor y por clave.
     }
 }

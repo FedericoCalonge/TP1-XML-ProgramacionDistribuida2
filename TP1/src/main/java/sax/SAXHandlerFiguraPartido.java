@@ -8,7 +8,7 @@ public class SAXHandlerFiguraPartido extends DefaultHandler {
     private int nFigura;
     private boolean hayFigura;
 
-    public SAXHandlerFiguraPartido() { //constructor
+    public SAXHandlerFiguraPartido() { //Constructor
         this.nFigura=0;
         this.hayFigura=false;
     }

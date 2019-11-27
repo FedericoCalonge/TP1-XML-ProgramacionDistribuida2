@@ -115,7 +115,6 @@ public class DOMResultadoPartidoTests {
         String keyUltimoValor = "";
         while(iterador.hasNext()){
             String key = (String) iterador.next();
-            //System.out.println(key + diccionario.get(key));
             keyUltimoValor = key;
         }
         return keyUltimoValor;

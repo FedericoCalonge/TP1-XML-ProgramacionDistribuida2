@@ -24,7 +24,7 @@ public class DOMEquipoLocalYVisitante {
         Document doc = builder.parse(new InputSource(inputStream));
 
         NodeList listaLocalVisitante = doc.getElementsByTagName(localOVisitante);
-        Node nNode = listaLocalVisitante.item(0);  //obtenemos el 1er tag local/visitante.
+        Node nNode = listaLocalVisitante.item(0);  //Obtenemos el 1er tag local/visitante.
         Element eElement = (Element) nNode;
         String atributoClub = eElement.getAttribute("club");
 

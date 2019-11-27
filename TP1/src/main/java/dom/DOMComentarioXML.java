@@ -47,10 +47,10 @@ public class DOMComentarioXML {
     public static Document escribirArchivo(Document doc, String comentario){
         Element notas = doc.createElement("notas");  // Creamos el elemento principal notas.
         notas.setTextContent(comentario);               // Establecemos el contenido de notas.
-        Node nodoPartido = doc.getDocumentElement();    //obtenemos el nodo XML principal (<partido>).
+        Node nodoPartido = doc.getDocumentElement();    // Obtenemos el nodo XML principal (<partido>).
         nodoPartido.appendChild(notas);                 // Hacemos al elemento notas que sea hijo directo del nodo XML principal (<partido>).
         doc.normalizeDocument();
-        return doc;                                     //Devolvemos el mismo doc pero modificado.
+        return doc;                                     // Devolvemos el mismo doc pero modificado.
     }
 
     //Envia el documento XML a un nuevo archivo XML:
@@ -62,17 +62,12 @@ public class DOMComentarioXML {
         Integer iterador = 0;
         String cadenaAConcatenar = "";
         String[] vectorXmlFilePath2 = pathXMLOriginal.split("/");
-        //System.out.println(vectorXmlFilePath2.length);
         while((vectorXmlFilePath2.length)-1>iterador){ //-1 ya que sacamos el "quilmes_2012.xml".
-            //System.out.println(vectorXmlFilePath2[iterador]);
             cadenaAConcatenar = cadenaAConcatenar.concat(vectorXmlFilePath2[iterador]+"/");
-            //System.out.println(iterador);
             iterador++;
         }
-        //System.out.println("Ruta del archivo XML es: " + cadenaAConcatenar); // --> /home/federicio/Desktop/PD2-MisReposGithub/TP1/TP1/src/main/resources/
-        //Y ahora le agregamos el xml nuevo para que quede el nuevo path completo:
-        String pathXMLConNotas = cadenaAConcatenar.concat("quilmes_2012_con_notas.xml");
-        
+        String pathXMLConNotas = cadenaAConcatenar.concat("quilmes_2012_con_notas.xml"); //Y ahora le agregamos el xml nuevo para que quede el nuevo path completo:
+
         File archivoNuevoXML = new File(pathXMLConNotas);           // Archivo donde almacenaremos el nuevo XML.
         DOMSource source = new DOMSource(docModificado);
         StreamResult result = new StreamResult(archivoNuevoXML);    // Resultado, el cual almacena en el archivo indicado

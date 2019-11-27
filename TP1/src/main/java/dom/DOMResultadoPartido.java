@@ -78,8 +78,7 @@ public class DOMResultadoPartido {
     }
 
     public static Map<String, ArrayList<Integer>> ordenameListaDelDiccionarioEnBaseAMinutos(Map<String, ArrayList<Integer>> dicAutorGolLocalOVisitante) {
-        //Ordenamos los valores del diccionario (listas) en base a los minutos.
-        //Pasando por ej. de Cauteruccio [50,2,18] a Cauteruccio [2,18,50].
+        //Ordenamos los valores del diccionario (listas) en base a los minutos. Pasando por ej. de Cauteruccio [50,2,18] a Cauteruccio [2,18,50].
         Iterator iterador = dicAutorGolLocalOVisitante.keySet().iterator();
         while(iterador.hasNext()){
             String key = (String) iterador.next();
