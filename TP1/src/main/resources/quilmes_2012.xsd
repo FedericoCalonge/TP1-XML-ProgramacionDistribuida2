@@ -13,35 +13,35 @@
     <xs:element name="minuto">
         <xs:simpleType>
             <xs:restriction base="xs:positiveInteger">
-               <xs:maxInclusive value="130"/>
+                <xs:maxInclusive value="130"/>
             </xs:restriction>
         </xs:simpleType>
     </xs:element>
 
     <!-- Atributos -->
-        <!-- Atributo SIN restricciones -->
-        <xs:attribute name="club" type="xs:string"/>
+    <!-- Atributo SIN restricciones -->
+    <xs:attribute name="club" type="xs:string"/>
 
-        <!-- Atributos CON restricciones -->
-        <xs:attribute name="fecha">
-            <xs:simpleType>
-                <xs:restriction base="xs:string">
-                    <xs:pattern value="\d{2}[/]\d{2}[/]\d{4}"/>
-                    <xs:length value="10"/>
-                </xs:restriction>
-            </xs:simpleType>
-        </xs:attribute>
+    <!-- Atributos CON restricciones -->
+    <xs:attribute name="fecha">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:pattern value="\d{2}[/]\d{2}[/]\d{4}"/>
+                <xs:length value="10"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
 
-        <xs:attribute name="posicion">
-            <xs:simpleType>
-                <xs:restriction base="xs:string">
-                    <xs:enumeration value="arquero"/>
-                    <xs:enumeration value='defensor'/>
-                    <xs:enumeration value='mediocampista'/>
-                    <xs:enumeration value='delantero'/>
-                </xs:restriction>
-            </xs:simpleType>
-        </xs:attribute>
+    <xs:attribute name="posicion">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="arquero"/>
+                <xs:enumeration value='defensor'/>
+                <xs:enumeration value='mediocampista'/>
+                <xs:enumeration value='delantero'/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
 
     <!--Tipo simple propio para usarlos arriba en -elementos simples- -->
     <xs:simpleType name="textoMax30">
@@ -61,15 +61,15 @@
         </xs:complexType>
     </xs:element>
 
-        <!--Tipo complejo propio para usarlos arriba en -local- y -visitante- -->
-        <xs:complexType name="localVisitante">
-            <xs:sequence>
-                <xs:element ref="formacion"/>
-                <xs:element ref="capitan" maxOccurs="1" minOccurs="1"/> <!--Tiene que haber solo 1 capitan-->
-                <xs:element ref="dt" minOccurs="1"/>
-            </xs:sequence>
-            <xs:attribute ref="club" use="required"/>
-        </xs:complexType>
+    <!--Tipo complejo propio para usarlos arriba en -local- y -visitante- -->
+    <xs:complexType name="localVisitante">
+        <xs:sequence>
+            <xs:element ref="formacion"/>
+            <xs:element ref="capitan" maxOccurs="1" minOccurs="1"/> <!--Tiene que haber solo 1 capitan-->
+            <xs:element ref="dt" minOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute ref="club" use="required"/>
+    </xs:complexType>
 
     <xs:element name="formacion">
         <xs:complexType>
@@ -93,7 +93,7 @@
         <xs:complexType>
             <!--Uso el all porque puede ser local2 y despues visitante2 o al reves. Y pongo los minOcurrs para que puedan haber o no goles (osea pueden o no estar local2 y visitante2) -->
             <xs:all>
-            <!-- Despues cambiar en el xml y aca el local2 por local y visitante2 por visitante y ver que como hacer para que sean distintos a los complexType de visitante y local que puse arriba -->
+                <!-- Despues cambiar en el xml y aca el local2 por local y visitante2 por visitante y ver que como hacer para que sean distintos a los complexType de visitante y local que puse arriba -->
                 <xs:element name="local" type="localVisitante2" minOccurs="0"/>
                 <xs:element name="visitante" type="localVisitante2" minOccurs="0"/>
             </xs:all>

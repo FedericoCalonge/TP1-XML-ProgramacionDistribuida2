@@ -11,30 +11,79 @@ import java.util.Collection;
 public class DOMFormacionLocalYVisitanteTest {
 
     @Test
-    public void dameNombreUltimoJugadorEquipoLocal() throws Exception {
+    public void dameNombreYPosicionUltimosJugadoresEquiposLocalYVisitante() throws Exception {
         DOMFormacionLocalYVisitante domFormacionLocalYVisitante = new DOMFormacionLocalYVisitante();
         String nameFile = "quilmes_2012.xml";
-        Collection<Node> playersNodes = domFormacionLocalYVisitante.devolverFormacion("local", nameFile);
-        String jugador = "";
-        for (Node player : playersNodes) {
-            //Obtenemos el nombre del jugador:
-            jugador = player.getFirstChild().getNodeValue();
+
+        Collection<Node> playersNodesLocal = domFormacionLocalYVisitante.devolverFormacion("local", nameFile);
+        Collection<Node> playersNodesVis = domFormacionLocalYVisitante.devolverFormacion("visitante", nameFile);
+
+        String jugadorLocal = "";
+        String posicionJugadorLocal = "";
+
+        String jugadorVis = "";
+        String posicionJugadorVis = "";
+
+        //Obtenemos el nombre y posicion del ultimo jugador Local y Vis:
+        for (Node player : playersNodesLocal) {
+            Element element = (Element) player;
+            posicionJugadorLocal = element.getAttribute("posicion");
+            jugadorLocal = player.getFirstChild().getNodeValue();
         }
-        Assert.assertEquals("El método dameNombreUltimoJugadorEquipoLocal no está devolviendo lo esperado",
-                "Alan Moreno", jugador);
+
+        for (Node player : playersNodesVis) {
+            Element element = (Element) player;
+            posicionJugadorVis = element.getAttribute("posicion");
+            jugadorVis = player.getFirstChild().getNodeValue();
+        }
+
+        Assert.assertEquals("El método dameNombreYPosicionUltimosJugadoresEquiposLocalYVisitante no está devolviendo lo esperado (jugador L)",
+                "Alan Moreno", jugadorLocal);
+        Assert.assertEquals("El método dameNombreYPosicionUltimosJugadoresEquiposLocalYVisitante no está devolviendo lo esperado (posicionJugador L)",
+                "delantero", posicionJugadorLocal);
+        Assert.assertEquals("El método dameNombreYPosicionUltimosJugadoresEquiposLocalYVisitante no está devolviendo lo esperado (jugador V)",
+                "Martín Cauteruccio", jugadorVis);
+        Assert.assertEquals("El método dameNombreYPosicionUltimosJugadoresEquiposLocalYVisitante no está devolviendo lo esperado (posicionJugador V)",
+                "delantero", posicionJugadorVis);
     }
 
     @Test
-    public void damePosicionUltimoJugadorEquipoVisitante() throws Exception {
+    public void dameNombreYPosicionPrimerosJugadoresEquiposLocalYVisitante() throws Exception {
         DOMFormacionLocalYVisitante domFormacionLocalYVisitante = new DOMFormacionLocalYVisitante();
         String nameFile = "quilmes_2012.xml";
-        Collection<Node> playersNodes = domFormacionLocalYVisitante.devolverFormacion("visitante", nameFile);
-        String posicionJugador = "";
-        for (Node player : playersNodes) {
+
+        Collection<Node> playersNodesLocal = domFormacionLocalYVisitante.devolverFormacion("local", nameFile);
+        Collection<Node> playersNodesVis = domFormacionLocalYVisitante.devolverFormacion("visitante", nameFile);
+
+        String jugadorLocal = "";
+        String posicionJugadorLocal = "";
+
+        String jugadorVis = "";
+        String posicionJugadorVis = "";
+
+        //Obtenemos el nombre y posicion del primer jugador Local y Vis:
+        for (Node player : playersNodesLocal) {
             Element element = (Element) player;
-            posicionJugador = element.getAttribute("posicion");
+            posicionJugadorLocal = element.getAttribute("posicion");
+            jugadorLocal = player.getFirstChild().getNodeValue();
+            break;
         }
-        Assert.assertEquals("El método damePosicionUltimoJugadorEquipoVisitante no está devolviendo lo esperado",
-                "delantero", posicionJugador);
+
+        for (Node player : playersNodesVis) {
+            Element element = (Element) player;
+            posicionJugadorVis = element.getAttribute("posicion");
+            jugadorVis = player.getFirstChild().getNodeValue();
+            break;
+        }
+
+        Assert.assertEquals("El método dameNombreYPosicionPrimerosJugadoresEquiposLocalYVisitante no está devolviendo lo esperado (jugador L)",
+                "Emanuel Guirado", jugadorLocal);
+        Assert.assertEquals("El método dameNombreYPosicionPrimerosJugadoresEquiposLocalYVisitante no está devolviendo lo esperado (posicionJugador L)",
+                "arquero", posicionJugadorLocal);
+        Assert.assertEquals("El método dameNombreYPosicionPrimerosJugadoresEquiposLocalYVisitante no está devolviendo lo esperado (jugador V)",
+                "Emanuel Tripodi", jugadorVis);
+        Assert.assertEquals("El método dameNombreYPosicionPrimerosJugadoresEquiposLocalYVisitante no está devolviendo lo esperado (posicionJugador V)",
+                "arquero", posicionJugadorVis);
+
     }
 }
