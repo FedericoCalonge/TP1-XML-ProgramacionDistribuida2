@@ -47,9 +47,6 @@ public class DOMFuncionesAuxiliares {
         if (!nodesFound.isEmpty() && nodesFound.size() > 1) {
             throw new IllegalStateException("Se encontró más de 1 nodo con ese nombre");
         }
-        if(nodesFound.isEmpty()){
-            throw new SinCapitanException("No hay capitanes en el xml");
-        }
         return nodesFound.iterator().next();
     }
 

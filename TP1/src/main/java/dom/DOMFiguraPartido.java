@@ -21,10 +21,6 @@ public class DOMFiguraPartido {
         Document doc = builder.parse(new InputSource(inputStream));
         NodeList nodeListFigura = doc.getElementsByTagName("figura");
 
-        if (nodeListFigura.getLength() == 0) {
-            throw new SinFiguraException("No hay figuras en el xml " + filename);
-        }
-
         return nodeListFigura;
     }
 }

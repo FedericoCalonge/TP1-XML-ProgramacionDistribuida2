@@ -18,6 +18,8 @@
                 <jugador posicion="delantero">Robinson Torres</jugador>
                 <jugador posicion="delantero">Alan Moreno</jugador>
             </formacion>
+            <capitan>Mario Vera</capitan>
+            <capitan>Alan Moreno</capitan>
             <dt>Dario Tempesta</dt>
         </local>
 

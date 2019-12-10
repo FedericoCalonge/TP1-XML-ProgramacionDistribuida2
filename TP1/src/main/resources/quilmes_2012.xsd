@@ -65,8 +65,8 @@
         <xs:complexType name="localVisitante">
             <xs:sequence>
                 <xs:element ref="formacion"/>
-                <xs:element ref="capitan"/>
-                <xs:element ref="dt"/>
+                <xs:element ref="capitan" maxOccurs="1" minOccurs="1"/> <!--Tiene que haber solo 1 capitan-->
+                <xs:element ref="dt" minOccurs="1"/>
             </xs:sequence>
             <xs:attribute ref="club" use="required"/>
         </xs:complexType>
@@ -121,7 +121,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="equipos" />
-                <xs:element ref="figura" maxOccurs="unbounded"/>  <!--Con unbounded puedo poner mas de 1 figura-->
+                <xs:element ref="figura" maxOccurs="unbounded" minOccurs="1"/>  <!--Con unbounded puedo poner mas de 1 figura. Ponemos minOccurs=1 para que siempre haya minimamente 1 figura-->
                 <xs:element ref="goles" minOccurs="0"/> <!--Asi, si no hay goles no pasa nada-->
             </xs:sequence>
             <xs:attribute ref="fecha" use="required"/>

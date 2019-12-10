@@ -40,5 +40,37 @@ public class XMLSchemaValidatorTest {
         Assert.assertFalse(validated);
     }
 
+    @Test
+    public void validando0Figuras() throws Exception {
+        XmlSchemaValidator xmlSchemaValidator = new XmlSchemaValidator();
+        String xmlFilePath = "src/test/resources/quilmes_2012_sin_figuras.xml";
+        String schemaFilePath = "src/test/resources/quilmes_2012.xsd";
+
+        boolean validated = xmlSchemaValidator.validateXMLSchema(schemaFilePath, xmlFilePath); //XmlSchemaValidator es la clase dentro del paquete validator (no hace falta hacer el import).
+
+        Assert.assertFalse(validated);
+    }
+
+    @Test
+    public void validando0Capitanes() throws Exception {
+        XmlSchemaValidator xmlSchemaValidator = new XmlSchemaValidator();
+        String xmlFilePath = "src/test/resources/quilmes_2012_sin_capitanes.xml";
+        String schemaFilePath = "src/test/resources/quilmes_2012.xsd";
+
+        boolean validated = xmlSchemaValidator.validateXMLSchema(schemaFilePath, xmlFilePath); //XmlSchemaValidator es la clase dentro del paquete validator (no hace falta hacer el import).
+
+        Assert.assertFalse(validated);
+    }
+
+    @Test
+    public void validandoMas1Capitan() throws Exception {
+        XmlSchemaValidator xmlSchemaValidator = new XmlSchemaValidator();
+        String xmlFilePath = "src/test/resources/quilmes_2012_mas_1_capitan.xml";
+        String schemaFilePath = "src/test/resources/quilmes_2012.xsd";
+
+        boolean validated = xmlSchemaValidator.validateXMLSchema(schemaFilePath, xmlFilePath); //XmlSchemaValidator es la clase dentro del paquete validator (no hace falta hacer el import).
+
+        Assert.assertFalse(validated);
+    }
 
 }

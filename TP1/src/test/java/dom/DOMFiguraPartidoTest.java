@@ -10,23 +10,17 @@ public class DOMFiguraPartidoTest {
     //Tests para la forma 1 para sacar la figura (mediante DOM):
     //Tests para la forma 2: en SAXHandlerFiguraPartidoTest.
     @Test
-    public void forma1DameFiguraCaminoFeliz() throws Exception {
+    public void forma1Dame1Figura() throws Exception {
 
         DOMFiguraPartido domFiguraEquipo = new DOMFiguraPartido();
         NodeList nodeListFigura = domFiguraEquipo.dameFiguraDelPartidoDOM("quilmes_2012.xml");
         String figura = nodeListFigura.item(0).getFirstChild().getNodeValue(); //Asi obtenemos la figura (suponiendo que hay solo una). Hacemos el getFirstChild ya que el texto "Martin Cauteruccio" es un nodo HIJO del tag <figura>
-        Assert.assertEquals("El método forma1DameFiguraCaminoFeliz no está devolviendo lo esperado",
+        Assert.assertEquals("El método forma1Dame1Figura no está devolviendo lo esperado",
                 "Martín Cauteruccio", figura);
     }
 
-    @Test(expected = SinFiguraException.class)
-    public void forma1DameFiguraNoHayFigura() throws Exception {
-        DOMFiguraPartido domFiguraEquipo = new DOMFiguraPartido();
-        domFiguraEquipo.dameFiguraDelPartidoDOM("quilmes_2012_sin_figura.xml");
-    }
-
     @Test
-    public void forma1DameFiguraHayDosFiguras() throws Exception {
+    public void forma1Dame2Figuras() throws Exception {
         DOMFiguraPartido domFiguraEquipo = new DOMFiguraPartido();
         NodeList nodeListFigura = domFiguraEquipo.dameFiguraDelPartidoDOM("quilmes_2012_2_figuras.xml");
 
@@ -45,9 +39,9 @@ public class DOMFiguraPartidoTest {
             iterador++;
         }
 
-        Assert.assertEquals("El método forma1DameFiguraHayDosFiguras para la figura1 no está devolviendo lo esperado",
+        Assert.assertEquals("El método forma1Dame2Figuras para la figura1 no está devolviendo lo esperado",
                 "Martín Cauteruccio", listaFiguras.get(0));
-        Assert.assertEquals("El método forma1DameFiguraHayDosFiguras para la figura2 no está devolviendo lo esperado",
+        Assert.assertEquals("El método forma1Dame2Figuras para la figura2 no está devolviendo lo esperado",
                 "Ezequiel Rescaldani", listaFiguras.get(1));
     }
 

@@ -25,16 +25,4 @@ public class DOMCapitanEquipoTest {
                 "Miguel Caneo", capitan);
     }
 
-    @Test(expected = SinCapitanException.class)
-    public void DameCapitanNoHayFiguraLocal() throws Exception {
-        DOMCapitanEquipo domCapitanEquipo = new DOMCapitanEquipo();
-        domCapitanEquipo.dameCapitan("local","quilmes_2012_sin_capitan_local.xml");
-    }
-
-    @Test(expected = SinCapitanException.class)
-    public void DameCapitanNoHayFiguraVisitante() throws Exception {
-        DOMCapitanEquipo domCapitanEquipo = new DOMCapitanEquipo();
-        domCapitanEquipo.dameCapitan("visitante","quilmes_2012_sin_capitan_visitante.xml");
-    }
-
 }
