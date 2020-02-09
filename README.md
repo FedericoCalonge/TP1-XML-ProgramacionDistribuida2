@@ -10,8 +10,8 @@ El archivo XML describe un partido y su resultado (con elementos equipos, jugado
 Test hechos con JUnit y uso de TRAVIS CI.  
 
 ### Requirements
--JAVA 11.  
--Maven.  
+-JAVA 11  
+-Maven  
 
 ### Consigna
 Leer el archivo "Consigna.pdf".  
