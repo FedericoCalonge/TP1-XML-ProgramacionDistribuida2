@@ -1,4 +1,4 @@
-# TPS-ProgramacionDistribuida2
+# TP1-XML-XMLSchema-DOM
 
 >Trabajo Práctico 1 -XML & XMLSchema & DOM- para la materia Programación Distribuida 2 (PD2), de la Universidad Nacional de Avellaneda.  
 >Profesor: Juan Lagostena.  
